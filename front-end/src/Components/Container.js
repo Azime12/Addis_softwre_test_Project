@@ -6,15 +6,20 @@ import { DisplayScreen } from "./Styles/DisplayScreen.style";
 import axios from "axios";
 import SongList from "./SongList";
 import DisplaySong from "./DisplaySong";
-
+import Header from "./Header";
+import { MainContainer } from "./Styles/MianContainer.style";
+import { useSelector } from "react-redux";
 const Container = () => {
-    
+  const song = useSelector((state)=> state.Songs.selected)
   return (
-    <ContentContainer>
-      <SongList />
-      <DisplaySong />
-      <FileUploads />
-    </ContentContainer>
+    <MainContainer>
+      <Header />
+      <ContentContainer>
+        <SongList />
+        {<DisplaySong/>}
+        <FileUploads />
+      </ContentContainer>
+    </MainContainer>
   );
 };
 

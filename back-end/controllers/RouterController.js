@@ -1,5 +1,6 @@
 // const express = require("express");
-const Songs = require("../models/SongsModel");
+const mongoose = require("mongoose");
+const Songs = require("../models/SongModel");
 const multer = require('multer');
 const path = require('path');
 
@@ -38,9 +39,9 @@ const getSongs = async (req, res) => {
   }
 };
 
-const addSongs = async (req, res) => {
+const addSong = async (req, res) => {
    const song = req.file.filename
-  //  console.log(song)
+   console.log(song)
   try {
     const createdSong = await Songs.create({
       song
@@ -49,11 +50,12 @@ const addSongs = async (req, res) => {
     res.status(200).send(createdSong);
   } catch (error) {
     const errors = handleErrors(error);
-    res.status(200).send(errors);
+    console.log(error)
+    res.status(400).send(errors);
   }
 };
-const updateSongs = async (req, res) => {
-  const id = req.body.params;
+const updateSong = async (req, res) => {
+  const id = req.params;
   try {
     const updatedSong = await Songs.findByIdAndUpdate(id, {
       ...req.body,
@@ -64,14 +66,20 @@ const updateSongs = async (req, res) => {
     res.status(200).send(errors);
   }
 };
-const deleteSongs = async (req, res) => {
-  const id = req.body.params;
+const deleteSong = async (req, res) => {
+  const {id} = req.params;
+  console.log(id)
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    console.log("id error");
+    return res.status(400).json({ error: "there is no such Song." });
+  }
   try {
-    const deletedSong = await Songs.findByIdAndUpdate(id);
+    const deletedSong = await Songs.findByIdAndDelete({_id:id});
+    console.log(deleteSong)
     res.status(200).send(deletedSong);
   } catch (error) {
     const errors = handleErrors(error);
     res.status(200).send(errors);
   }
 };
-module.exports = { getSongs, addSongs, updateSongs, deleteSongs,uploads };
+module.exports = { getSongs, addSong, updateSong, deleteSong,uploads };

@@ -1,17 +1,20 @@
 import "./App.css";
 import FileUploads from "./Components/FileUploads";
-import Container  from "./Components/Container";
+import Container from "./Components/Container";
 import { ThemeProvider } from "styled-components";
-const theme = {
+import Routers from "./Components/Routers";
+import { BrowserRouter } from "react-router-dom";
 
-}
+const theme = {};
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
-        <Container />
-      </div>
+      {/* <div className="App"> */}
+      
+        <Routers />
+      
+      {/* </div> */}
     </ThemeProvider>
   );
 }
