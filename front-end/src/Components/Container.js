@@ -11,7 +11,7 @@ const Container = () => {
       <Header />
       <ContentContainer>
         <SongList />
-        <DisplaySong/>
+        {<DisplaySong/>}
         <FileUploads />
       </ContentContainer>
     </MainContainer>

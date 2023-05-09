@@ -4,8 +4,9 @@ export const SongListStyle = styled.div`
   width: 50%;
   height: 100vh;
   overflow-y: scroll;
-  @media (max-width:786px){
+  @media (max-width: 786px) {
     width: 100%;
+    margin: 5px;
   }
 `;
 export const Song = styled.p`
