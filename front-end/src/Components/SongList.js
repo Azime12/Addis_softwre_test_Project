@@ -18,7 +18,7 @@ const SongList = () => {
   };
   useEffect(() => {
     const fetchFunc = async () => {
-      const { data } = await axios.get("http://localhost:7000/getSongs");
+      const { data } = await axios.get("https://addis-software-intern-song-player.onrender.com/getSongs");
       dispatch(getSongs(data));
     };
     fetchFunc();
@@ -26,7 +26,7 @@ const SongList = () => {
   const handleDelete = async (song) => {
     const id = song._id;
     const { data } = await axios.delete(
-      "http://localhost:7000/deleteSong/" + id
+      "https://addis-software-intern-song-player.onrender.com/deleteSong/" + id
     );
     dispatch(deleteSong(data));
   };

@@ -24,7 +24,7 @@ const FileUploads = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:7000/addSongs",
+        "https://addis-software-intern-song-player.onrender.com/addSongs",
         formData
       );
       dispatch(addSong(data));
