@@ -6,6 +6,10 @@ const songsModel = mongoose.Schema(
       type: String,
       required: [true, "Please Enter The Song."],
     },
+    artist:{
+      type:String,
+      default:'Unknown Artist'
+    }
   },
   { timestamps: true }
 );

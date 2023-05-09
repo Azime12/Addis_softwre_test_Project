@@ -14,15 +14,6 @@ export const UploadContainer = styled.div`
     max-width: 100%;
     margin-top: 5px;
   }
-  /* border:none;
-    outline: 0;
-    padding: 12px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 20%;
-    font-size: 18px; */
 `;
 export const UploadView = styled.img`
   margin: 1em;
@@ -57,3 +48,12 @@ export const FileInput = styled.input`
   color: white;
   background-color: #8aaae5;
 `;
+export const ArtistInput = styled(FileInput)`
+  background-color: black;
+  color: white;
+  cursor: text;
+`
+export const ArtistEditInput = styled(ArtistInput)`
+background-color: #2BAE66;
+  color: white;
+`

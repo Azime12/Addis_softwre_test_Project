@@ -1,4 +1,3 @@
-import React from 'react'
 import { createSlice } from '@reduxjs/toolkit'
 
 
@@ -19,7 +18,12 @@ export const SongSlice = createSlice({
         deleteSong:(state,action)=>{
             state.songs = state.songs.filter((song)=> song._id !== action.payload._id)
         },
-        updateSong:(state)=>{},
+        updateSong:(state,action)=>{
+            state.songs = action.payload
+            // console.log('first',state.currentSong)
+            // state.currentSong = state.songs.filter((song)=> song._id === state.currentSong._id)
+            // console.log('second',state.currentSong)
+        },
 
         playCurrent:(state,action)=>{
             state.currentSong = action.payload
