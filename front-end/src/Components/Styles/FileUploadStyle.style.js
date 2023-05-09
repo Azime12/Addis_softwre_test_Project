@@ -11,6 +11,7 @@ export const UploadContainer = styled.div`
   width: 100%;
   @media (max-width:786px){
     width: 100%;
+    height: 100%;
     max-width: 100%;
     margin-top: 5px;
   }
@@ -33,6 +34,9 @@ export const UploadButton = styled.input`
   margin: 20px;
   color: white;
   background-color: palevioletred;
+  @media (max-width:786px){
+    margin-bottom: 10px;
+  }
 `;
 export const FileInput = styled.input`
   width: 100%;

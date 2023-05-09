@@ -4,9 +4,10 @@ export const SongListStyle = styled.div`
   width: 50%;
   height: 100vh;
   overflow-y: scroll;
-  @media (max-width: 786px) {
+  @media (max-width:786px){
     width: 100%;
-    margin: 5px;
+    max-width: 100%;
+    margin-top: 5px;
   }
 `;
 export const Song = styled.p`
@@ -16,12 +17,13 @@ export const Song = styled.p`
 `;
 export const List = styled.section`
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   &:hover {
     background-color: #ddd;
     color: black;
   }
   background-color: white;
+  
 `;
 export const Button = styled.button`
   border-radius: 50px;
@@ -57,7 +59,7 @@ export const Holder = styled.div`
 export const DeleteButton = styled.button`
   background: ${(props) => (props.$primary ? "palevioletred" : "white")};
   color: ${(props) => (props.$primary ? "white" : "palevioletred")};
-    flex-grow: 1;
+    /* flex-grow: 1; */
   /* font-size: 1em; */
   font-size: 20px;
   margin: 1em;
