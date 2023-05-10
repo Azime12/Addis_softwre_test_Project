@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 export const SongListStyle = styled.div`
   width: 50%;
@@ -13,11 +13,9 @@ export const SongListStyle = styled.div`
 export const Song = styled.p`
   align-items: center;
   margin-top: 0px;
-  /* background-color: ${({ bg }) => (bg !== "" ? bg : "white")}; */
 `;
 export const List = styled.section`
   display: flex;
-  /* flex-direction: row; */
   &:hover {
     background-color: #ddd;
     color: black;
@@ -59,8 +57,6 @@ export const Holder = styled.div`
 export const DeleteButton = styled.button`
   background: ${(props) => (props.$primary ? "palevioletred" : "white")};
   color: ${(props) => (props.$primary ? "white" : "palevioletred")};
-    /* flex-grow: 1; */
-  /* font-size: 1em; */
   font-size: 20px;
   margin: 1em;
   align-items: center;
