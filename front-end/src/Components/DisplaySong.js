@@ -22,7 +22,7 @@ const DisplaySong = () => {
   const handleSubmit = async (song,e)=>{
     const id = song._id
     const artist = {changedValue}
-    const {data} = await axios.patch('https://addis-software-intern-song-player.onrender.com/updateSongs/'+ id,artist)
+    const {data} = await axios.patch('http://localhost:7000/updateSongs/'+ id,artist)
     // dispatch(updateSong(data));
     console.log(data)
     dispatch(playCurrent(data.updatedSong))
@@ -63,7 +63,7 @@ const DisplaySong = () => {
         </div>
         <div>
           <AudioPlayer
-            src={`https://addis-software-intern-song-player.onrender.com/uploads/${currentMusic.song}`}
+            src={`http://localhost:7000/uploads/${currentMusic.song}`}
             controls
             autoPlay
           ></AudioPlayer>

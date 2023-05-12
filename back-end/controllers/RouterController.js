@@ -50,11 +50,13 @@ const addSong = async (req, res) => {
   const song = req.file.filename;
 
   console.log(req.body);
-  const { artist } = req.body;
+  // const { artist } = req.body;
+  const songName = req.file.filename.split('.')[0];
+  console.log(song)
   try {
     const createdSong = await Songs.create({
       song,
-      artist,
+      artist:songName,
     });
     console.log(createdSong);
     res.status(200).send(createdSong);
@@ -67,9 +69,7 @@ const addSong = async (req, res) => {
 const updateSong = async (req, res) => {
   const { id } = req.params;
   let artist = req.body.changedValue;
-  if(artist === ''){
-    artist = 'Unknown Artist'
-  }
+  
   try {
     const updatedSong = await Songs.findByIdAndUpdate(
       { _id: id },

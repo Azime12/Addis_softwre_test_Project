@@ -24,7 +24,7 @@ const FileUploads = () => {
 
     try {
       const { data } = await axios.post(
-        "https://addis-software-intern-song-player.onrender.com/addSongs",
+        "http://localhost:7000/addSongs",
         formData
       );
       dispatch(addSong(data));
@@ -51,13 +51,12 @@ const FileUploads = () => {
           accept="audio/*"
           required
         />
-        <p style = {{color:'red'}}>{error}</p>
-        <ArtistInput
+        <p style = {{color:'red'}}> {error} </p>
+        {/* <ArtistInput
           type="text"
           placeholder="Enter Artist Name"
           onChange={handleArtist}
-          accept="audio/*"
-        />
+        /> */}
 
         <br />
         <UploadButton type="submit" onClick={handleSubmit} value="Add Song" />

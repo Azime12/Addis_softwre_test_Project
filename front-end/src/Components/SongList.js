@@ -18,7 +18,7 @@ const SongList = () => {
   };
   useEffect(() => {
     const fetchFunc = async () => {
-      const { data } = await axios.get("https://addis-software-intern-song-player.onrender.com/getSongs");
+      const { data } = await axios.get("http://localhost:7000/getSongs");
       dispatch(getSongs(data));
     };
     fetchFunc();
@@ -43,7 +43,7 @@ const SongList = () => {
                     handleSong(items);
                   }}
                 >
-                  {items.song}
+                  {items.artist}
                 </ListButton>
                 <DeleteButton
                   deleteSong={items}
