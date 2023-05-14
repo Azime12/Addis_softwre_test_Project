@@ -1,34 +1,31 @@
 import React, { useEffect } from "react";
-import { List,  SongListStyle,DeleteButton,Holder, ListButton  } from "./Styles/SongListStyle.style";
 import {
-  deleteSong,
-  getSongs,
-  playCurrent,
-} from "./ReduxToolKit/Features/SongSlice";
-import axios from "axios";
+  List,
+  SongListStyle,
+  DeleteButton,
+  Holder,
+  ListButton,
+} from "./Styles/SongListStyle.style";
+import { playCurrent } from "./ReduxToolKit/Features/SongSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { DELETE_SONG, GET_SONG } from "./ReduxSaga/Types/ActionTypes";
 
 const SongList = () => {
   const songList = useSelector((state) => state.Songs.songs);
   const dispatch = useDispatch();
-
   const handleSong = (song) => {
     dispatch(playCurrent(song));
   };
   useEffect(() => {
     const fetchFunc = async () => {
-      const { data } = await axios.get("https://addis-software-songplayer.onrender.com/getSongs");
-      dispatch(getSongs(data));
+      dispatch({ type: GET_SONG });
     };
     fetchFunc();
   }, []);
   const handleDelete = async (song) => {
     const id = song._id;
-    const { data } = await axios.delete(
-      "https://addis-software-songplayer.onrender.com/deleteSong/" + id
-    );
-    dispatch(deleteSong(data));
+    dispatch({ type: DELETE_SONG, id });
   };
   return (
     <>
@@ -36,9 +33,8 @@ const SongList = () => {
         {songList && (
           <Holder>
             {songList.map((items, index) => (
-              <List>
+              <List key={index}>
                 <ListButton
-                  key={index}
                   onClick={() => {
                     handleSong(items);
                   }}
