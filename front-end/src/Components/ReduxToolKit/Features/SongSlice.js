@@ -6,7 +6,8 @@ export const SongSlice = createSlice({
     initialState:{
         songs:null,
         currentSong:{},
-        selected:''
+        selected:'',
+        error:null
     },
     reducers:{
         getSongs:(state,action)=>{
@@ -31,8 +32,11 @@ export const SongSlice = createSlice({
         single:(state,action)=>{
             state.selected = action.payload
         },
+        addError:(state,action)=>{
+            state.error = action.payload
+        }
     }
 }) 
-export const {getSongs,addSong,deleteSong,updateSong,playCurrent,single} = SongSlice.actions;
+export const {getSongs,addSong,deleteSong,updateSong,playCurrent,single,addError} = SongSlice.actions;
 
 export default SongSlice.reducer

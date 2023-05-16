@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   FileInput,
   UploadButton,
@@ -12,20 +12,17 @@ import { ADD_SONG } from "./ReduxSaga/Types/ActionTypes";
 const FileUploads = () => {
   const [fileValue, setFileValue] = useState("");
   const [artist, setArtist] = useState("");
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
+  const error = useSelector((state)=> state.Songs.error)
   const dispatch = useDispatch();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", fileValue);
     formData.append("artist", artist);
-
-    try {
       dispatch({ type: ADD_SONG, formData });
-    } catch (error) {
       console.log(error.response.data);
-      setError(error.response.data.error);
-    }
+      // setError(error.response.data.error);
   };
   const handleUpload = (e) => {
     e.preventDefault();

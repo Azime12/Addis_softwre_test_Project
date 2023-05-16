@@ -7,6 +7,7 @@ import {
   updateSongAPI,
 } from "./SongAPI";
 import {
+  addError,
   addSong,
   deleteSong,
   getSongs,
@@ -18,8 +19,13 @@ export function* getSongSaga() {
   yield put(getSongs(data));
 }
 export function* addSongSaga(action) {
-  const { data } = yield call(postSongAPI, action.formData);
-  yield put(addSong(data));
+  try {
+    const { data } = yield call(postSongAPI, action.formData);
+    yield put(addSong(data));
+  } catch (error) {
+    console.log(error)
+    yield put(addError(error.response.data.error))
+  }
 }
 export function* updateSongSaga(action) {
   const { data } = yield call(updateSongAPI, action.id, action.artist);
