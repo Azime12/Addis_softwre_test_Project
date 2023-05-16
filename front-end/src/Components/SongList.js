@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   List,
   SongListStyle,
@@ -14,6 +14,7 @@ import { DELETE_SONG, GET_SONG } from "./ReduxSaga/Types/ActionTypes";
 const SongList = () => {
   const songList = useSelector((state) => state.Songs.songs);
   const dispatch = useDispatch();
+  const [clicked,setClicked] = useState(false);
   const handleSong = (song) => {
     dispatch(playCurrent(song));
   };
@@ -36,6 +37,7 @@ const SongList = () => {
               <List key={index}>
                 <ListButton
                   onClick={() => {
+                    setClicked(true)
                     handleSong(items);
                   }}
                 >

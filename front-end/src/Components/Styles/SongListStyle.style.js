@@ -4,10 +4,16 @@ export const SongListStyle = styled.div`
   width: 50%;
   height: 100vh;
   overflow-y: scroll;
+  display: flex;
+  grid-template-columns: 6fr 4fr;
+
+  background-color: white;
+  box-shadow: 1px 1px 25px 3px rgba(0, 0, 0, 0.3);
   @media (max-width:786px){
     width: 100%;
     max-width: 100%;
     margin-top: 5px;
+    grid-template-columns: 1fr;
   }
 `;
 export const Song = styled.p`
@@ -48,11 +54,12 @@ export const ListButton = styled.li`
   padding: 14px 28px;
   font-size: 16px;
   cursor: pointer;
-  text-align: center;
+  /* text-align: center; */
  
 `;
 export const Holder = styled.div`
     margin-bottom: 100px;
+    width: 100%;
 `
 export const DeleteButton = styled.button`
   background: ${(props) => (props.$primary ? "palevioletred" : "white")};
